@@ -23,6 +23,10 @@
       transform: translate(-50%, -50%);
     }
 
+    #player {
+      text-align: center;
+    }
+
     #question {
       color: rgba(0, 0, 0, 0.8);
 
@@ -49,8 +53,31 @@
 
   <div id="content">
     <div id="question">Is it <b>easy Tuesday</b>?</div>
-    <div id="answer">nope</div>
+    
+    <div id="answer">placeholder_text</div>
+
+    <div id="player">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/x0I6mhZ5wMw?si=RwxgL7F-c5FYithe&autoplay=1"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe> 
+    </div>
   </div>
+  
+  <script>
+    var currentDate = new Date();
+    var answerDiv = document.getElementById("answer");
+    var playerDiv = document.getElementById("player");
+    
+    // check if today is Tuesday (Tuesday corresponds to day index 2)
+    if (currentDate.getDay() === 6) {
+      answerDiv.innerHTML = "YES!";
+      playerDiv.style.display = "block";
+    }else{
+      answerDiv.innerHTML = "NO!";
+      playerDiv.style.display = "none";
+    }
+  </script>
 
 </body>
 
