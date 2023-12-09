@@ -45,6 +45,16 @@
 
       text-align: center;
     }
+
+    #counter {
+      color: rgba(0, 0, 0, 0.8);
+
+      font-family: 'Nunito', sans-serif;
+      font-weight: 1000;
+      font-size: 200px;
+
+      text-align: center;
+    }
   </style>
 
 </head>
@@ -53,31 +63,38 @@
 
   <div id="content">
     <div id="question">Is it <b>easy Tuesday</b>?</div>
-
-    <div id="answer">placeholder_text</div>
-
-    <div id="player">
-      <iframe width="560" height="315" allow="autoplay"
-        src="https://www.youtube.com/embed/x0I6mhZ5wMw?si=RwxgL7F-c5FYithe?autoplay=1" title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </div>
+    <div id="answer">placehoder (yes/no)</div>
+    <div id="counter">placehoder (3, 2, 1)</div>
   </div>
 
   <script>
     var currentDate = new Date();
     var answerDiv = document.getElementById("answer");
-    var playerDiv = document.getElementById("player");
+    var counterDiv = document.getElementById("counter");
 
     // check if today is Tuesday (Tuesday corresponds to day index 2)
     if (currentDate.getDay() === 6) {
       answerDiv.innerHTML = "YES!";
-      playerDiv.style.display = "block";
+      counterDiv.innerHTML = "3";
+      var countdownInterval = setInterval(startCountdownToRedirect, 1000);
     } else {
       answerDiv.innerHTML = "NO!";
-      playerDiv.style.display = "none";
+      counterDiv.innerHTML = "";
     }
+
+    function startCountdownToRedirect(countFrom) {
+        var countdownElement = document.getElementById("counter");
+        var currentNumber = parseInt(countdownElement.innerHTML);
+
+        // if the current number is greater than 1, decrement it; otherwise, stop the countdown
+        if (currentNumber > 0) {
+            countdownElement.innerHTML = (currentNumber - 1).toString();
+        } else {
+            clearInterval(countdownInterval);
+            window.location.href = "https://www.youtube.com/watch?v=Re_f1UOWyNg";
+        }
+    }
+
 
   </script>
 
