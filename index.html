@@ -23,10 +23,6 @@
       transform: translate(-50%, -50%);
     }
 
-    #player {
-      text-align: center;
-    }
-
     #question {
       color: rgba(0, 0, 0, 0.8);
 
@@ -41,7 +37,7 @@
 
       font-family: 'Nunito', sans-serif;
       font-weight: 1000;
-      font-size: 300px;
+      font-size: 200px;
 
       text-align: center;
     }
@@ -72,29 +68,31 @@
     var answerDiv = document.getElementById("answer");
     var counterDiv = document.getElementById("counter");
 
-    // check if today is Tuesday (Tuesday corresponds to day index 2)
-    if (currentDate.getDay() === 6) {
+    var counterInSec = 60;
+    var countdownInterval;
+
+    if (currentDate.getDay() === 2) {
       answerDiv.innerHTML = "YES!";
-      counterDiv.innerHTML = "3";
-      var countdownInterval = setInterval(startCountdownToRedirect, 1000);
+      counterDiv.innerHTML = counterInSec;
+      countdownInterval = setInterval(startCountdownToRedirect, 1*1000);
     } else {
       answerDiv.innerHTML = "NO!";
       counterDiv.innerHTML = "";
     }
 
     function startCountdownToRedirect(countFrom) {
-        var countdownElement = document.getElementById("counter");
-        var currentNumber = parseInt(countdownElement.innerHTML);
+      var countdownDiv = document.getElementById("counter");
+      var currentNumber = parseInt(countdownDiv.innerHTML);
 
-        // if the current number is greater than 1, decrement it; otherwise, stop the countdown
-        if (currentNumber > 0) {
-            countdownElement.innerHTML = (currentNumber - 1).toString();
-        } else {
-            clearInterval(countdownInterval);
-            window.location.href = "https://www.youtube.com/watch?v=Re_f1UOWyNg";
-        }
+      if (currentNumber > 0) {
+        // update(decrease) counter
+        countdownDiv.innerHTML = (currentNumber - 1).toString();
+      } else {
+        // stop counter and redirect
+        clearInterval(countdownInterval);
+        window.location.href = "https://www.youtube.com/watch?v=Re_f1UOWyNg";
+      }
     }
-
 
   </script>
 
