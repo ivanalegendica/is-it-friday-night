@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Is it easy Tuesday?</title>
+    <title>Is it Friday night?</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -50,7 +50,7 @@
 
   <body>
     <div class="content">
-      <div class="small-text">Is it <b>easy Tuesday</b>?</div>
+      <div class="small-text">Is it <b>Friday night?</b>?</div>
       <div class="big-text" id="answer">placehoder (yes/no)</div>
       <div id="counter">
         <div class="small-text">Get ready in</div>
@@ -67,7 +67,7 @@
       var counterInSec = 60;
       var countdownInterval;
 
-      if (currentDate.getDay() === 2) {
+      if (currentDate.getDay() === 5) {
         answerDiv.innerHTML = "YES!";
         counterDiv.style.display = "block"; // show div
         var countdownDiv = document.getElementById("countdown");
@@ -88,7 +88,7 @@
         } else {
           // stop counter and redirect
           clearInterval(countdownInterval);
-          window.location.href = "https://www.youtube.com/watch?v=nVg4HEFilqw";
+          window.location.href = "https://www.youtube.com/watch?v=a1XGTAB13aM";
         }
       }
     </script>
