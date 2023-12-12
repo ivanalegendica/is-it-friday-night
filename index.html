@@ -1,101 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-<head>
+    <title>Is it easy Tuesday?</title>
 
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap"
+      rel="stylesheet"
+    />
 
-  <title>Is it easy Tuesday?</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@1000&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
-
-  <style>
-    #content {
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
-
-    #question {
-      color: rgba(0, 0, 0, 0.8);
-
-      font-family: 'Gloria Hallelujah', cursive;
-      font-size: xx-large;
-
-      text-align: center;
-    }
-
-    #answer {
-      color: rgba(0, 0, 0, 0.8);
-
-      font-family: 'Nunito', sans-serif;
-      font-weight: 1000;
-      font-size: 200px;
-
-      text-align: center;
-    }
-
-    #counter {
-      color: rgba(0, 0, 0, 0.8);
-
-      font-family: 'Nunito', sans-serif;
-      font-weight: 1000;
-      font-size: 200px;
-
-      text-align: center;
-    }
-  </style>
-
-</head>
-
-<body>
-
-  <div id="content">
-    <div id="question">Is it <b>easy Tuesday</b>?</div>
-    <div id="answer">placehoder (yes/no)</div>
-    <div id="counter">placehoder (3, 2, 1)</div>
-  </div>
-
-  <script>
-    var currentDate = new Date();
-    var answerDiv = document.getElementById("answer");
-    var counterDiv = document.getElementById("counter");
-
-    var counterInSec = 60;
-    var countdownInterval;
-
-    if (currentDate.getDay() === 2) {
-      answerDiv.innerHTML = "YES!";
-      counterDiv.innerHTML = counterInSec;
-      countdownInterval = setInterval(startCountdownToRedirect, 1*1000);
-    } else {
-      answerDiv.innerHTML = "NO!";
-      counterDiv.innerHTML = "";
-    }
-
-    function startCountdownToRedirect(countFrom) {
-      var countdownDiv = document.getElementById("counter");
-      var currentNumber = parseInt(countdownDiv.innerHTML);
-
-      if (currentNumber > 0) {
-        // update(decrease) counter
-        countdownDiv.innerHTML = (currentNumber - 1).toString();
-      } else {
-        // stop counter and redirect
-        clearInterval(countdownInterval);
-        window.location.href = "https://www.youtube.com/watch?v=Re_f1UOWyNg";
+    <style>
+      .content {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
       }
-    }
 
-  </script>
+      .small-text {
+        color: rgba(0, 0, 0, 0.8);
 
-</body>
+        font-family: "Gloria Hallelujah", cursive;
+        font-size: xx-large;
 
+        text-align: center;
+      }
+
+      .big-text {
+        color: rgba(0, 0, 0, 0.8);
+
+        font-family: "Nunito", sans-serif;
+        font-weight: 1000;
+        font-size: 200px;
+
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="small-text">Is it <b>easy Tuesday</b>?</div>
+      <div class="big-text" id="answer">placehoder (yes/no)</div>
+      <div id="counter">
+        <div class="small-text">Get ready in</div>
+        <div class="big-text" id="countdown">placehoder (3, 2, 1)</div>
+        <div class="small-text">seconds!</div>
+      </div>
+    </div>
+
+    <script>
+      var currentDate = new Date();
+      var answerDiv = document.getElementById("answer");
+      var counterDiv = document.getElementById("counter");
+
+      var counterInSec = 60;
+      var countdownInterval;
+
+      if (currentDate.getDay() === 2) {
+        answerDiv.innerHTML = "YES!";
+        counterDiv.style.display = "block"; // show div
+        var countdownDiv = document.getElementById("countdown");
+        countdownDiv.innerHTML = counterInSec;
+        countdownInterval = setInterval(startCountdownToRedirect, 1 * 1000);
+      } else {
+        answerDiv.innerHTML = "NO!";
+        counterDiv.style.display = "none"; // hide div
+      }
+
+      function startCountdownToRedirect(countFrom) {
+        var countdownDiv = document.getElementById("countdown");
+        var currentNumber = parseInt(countdownDiv.innerHTML);
+
+        if (currentNumber > 0) {
+          // update(decrease) counter
+          countdownDiv.innerHTML = (currentNumber - 1).toString();
+        } else {
+          // stop counter and redirect
+          clearInterval(countdownInterval);
+          window.location.href = "https://www.youtube.com/watch?v=nVg4HEFilqw";
+        }
+      }
+    </script>
+  </body>
 </html>
