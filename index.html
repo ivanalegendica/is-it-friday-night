@@ -18,6 +18,23 @@
     />
 
     <style>
+
+      .main-red {
+        background: red;
+      }
+
+      .main-white {
+        background: white;
+      }
+
+      .text-white {
+        color: white;
+      }
+
+      .text-black {
+        color: black;
+      }
+
       .content {
         margin: 0;
         position: absolute;
@@ -28,8 +45,6 @@
       }
 
       .small-text {
-        color: rgba(0, 0, 0, 0.8);
-
         font-family: "Gloria Hallelujah", cursive;
         font-size: xx-large;
 
@@ -37,8 +52,6 @@
       }
 
       .big-text {
-        color: rgba(0, 0, 0, 0.8);
-
         font-family: "Nunito", sans-serif;
         font-weight: 1000;
         font-size: 200px;
@@ -48,10 +61,10 @@
     </style>
   </head>
 
-  <body>
+  <body id="main" class="main-red">
     <div class="content">
-      <div class="small-text">Is it <b>Friday night?</b>?</div>
-      <div class="big-text" id="answer">placehoder (yes/no)</div>
+      <div id="small-text" class="small-text text-white">Is it <b>Friday night?</b>?</div>
+      <div id="big-text" class="big-text text-white">placehoder (yes/no)</div>
       <div id="counter">
         <div class="small-text">Get ready in</div>
         <div class="big-text" id="countdown">placehoder (3, 2, 1)</div>
@@ -61,7 +74,7 @@
 
     <script>
       var currentDate = new Date();
-      var answerDiv = document.getElementById("answer");
+      var answerDiv = document.getElementById("big-text");
       var counterDiv = document.getElementById("counter");
 
       var counterInSec = 60;
@@ -91,6 +104,38 @@
           window.location.href = "https://www.youtube.com/watch?v=a1XGTAB13aM";
         }
       }
+
+      setInterval(changeColor, 200)
+
+      function changeColor() {
+        const element = document.getElementById('main');
+        if (element.classList.contains('main-red')) {
+          element.classList.remove('main-red');
+          element.classList.add('main-white');
+        } else if (element.classList.contains('main-white')) {
+          element.classList.remove('main-white');
+          element.classList.add('main-red');
+        }
+
+        const smText = document.getElementById('small-text');
+        if (smText.classList.contains('text-white')) {
+          smText.classList.remove('text-white');
+          smText.classList.add('text-black');
+        } else if (smText.classList.contains('text-black')) {
+          smText.classList.remove('text-black');
+          smText.classList.add('text-white');
+        }
+
+        const lgText = document.getElementById('big-text');
+        if (lgText.classList.contains('text-white')) {
+          lgText.classList.remove('text-white');
+          lgText.classList.add('text-black');
+        } else if (lgText.classList.contains('text-black')) {
+          lgText.classList.remove('text-black');
+          lgText.classList.add('text-white');
+        }
+      }
+
     </script>
   </body>
 </html>
